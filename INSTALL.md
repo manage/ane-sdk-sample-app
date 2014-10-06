@@ -27,19 +27,23 @@ The SDK for Adobe AIR is available once you [sign up](https://appsponsor.com/use
 
 2. In Flash Builder, open your project `Properties`
 
-![](https://appsponsor.com/assets/501fed8d/private/images/adobe_installing_sdk_1.png)
-
+ ![](https://s3.amazonaws.com/cdn.manage.com/appsponsor/documentation/ane/step-1.png)
 
 3. Select `ActionScript Build Path`, and then click `Native Extensions` tab.  On this tab, click `Add ANE` button
 
-![](https://appsponsor.com/assets/501fed8d/private/images/adobe_installing_sdk_2.png)
-
+ ![](https://s3.amazonaws.com/cdn.manage.com/appsponsor/documentation/ane/step-2.png)
 
 4. Select the ManageSDK ANE file
 
 5. Next, select `ActionScript Build Packaging`, and then depending on iOS and/or Android, click `Native Extensions` and check the ManageSDK ANE package
 
-``INSERT ACTIONSCRIPT BUILDING PACKAGING FOR IOS AND ANDROID HERE`
+ **Android:**
+
+  ![](https://s3.amazonaws.com/cdn.manage.com/appsponsor/documentation/ane/step-3.png)
+
+ **iOS:**
+
+  ![](https://s3.amazonaws.com/cdn.manage.com/appsponsor/documentation/ane/step-4.png)
 
 6. Click Apply
 
