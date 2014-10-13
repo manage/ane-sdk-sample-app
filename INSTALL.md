@@ -68,7 +68,7 @@ For Android, put this code in your Android Manifest
 					<activity android:name="com.appsponsor.appsponsorsdk.activity.VideoAdActivity" android:screenOrientation="landscape" android:launchMode="singleTop" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
 					
 					// Add Google Play Services
-					<meta-data android:name="com.google.android.gms.version" android:value="4323000" />
+					<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
 				</application>	
 			</manifest>
 			
@@ -83,6 +83,7 @@ Verify that the Manage SDK entry is added :
     <extensionID>com.appsponsor.nativeExtensions.appsponsorsdk</extensionID>
 </extensions>
 ```
+
 ###4. Displaying an interstitial AD
 
 1. Import the appsponsorsdk into any activity that uses it: 
