@@ -1,10 +1,10 @@
-#ADOBE AIR INSTALL GUIDE
+# ADOBE AIR INSTALL GUIDE
 
-###Overview
+### Overview
 
 This guide provides integration instructions for the Manage Publisher Adobe Air SDK.  If you need support or have any questions, feel free to email us at [support@appsponsor.com](support@appsponsor.com)
 
- Requirements and Dependencies:
+Requirements and Dependencies:
 
 * Android:
     * Android version 2.3 or greater
@@ -14,14 +14,17 @@ This guide provides integration instructions for the Manage Publisher Adobe Air 
     * iOS 6+
 * If you are using a Rewarded ad, you will need to set up your [Server to Server](https://appsponsor.com/site/page/?view=install_server2server) callback.
 
-###1. Download and Install the SDK
+### 1. Download and Install the SDK
+
 The SDK for Adobe AIR is available once you [sign up](https://appsponsor.com/user/registration). The Manage Publisher SDK includes everything you need to serve full screen interstitial, video, and playable ad units.
 
+The SDK for Unity can be downloaded here: [ManageSDK-Android-v3.1.zip](/downloads/ManageSDK-Android-v3.1.zip).
 
-**Note:** There are some third party ANE files, which obfuscate Google Play Services. In such cases, we can provide custom SDK builds without Google Play Services.
+For an example, please see our [sample app](https://github.com/manage/ane-sdk-sample-app).
 
+*Note:* There are some third party ANE files, which obfuscate Google Play Services. In such cases, we can provide custom SDK builds without Google Play Services.
 
-###2. Adding the SDK to your project
+### 2. Adding the SDK to your project
 
 1. Unzip the Manage Publisher ANE zip file into a directory. It contains the ManageSDK ANE file
 
@@ -47,7 +50,7 @@ The SDK for Adobe AIR is available once you [sign up](https://appsponsor.com/use
 
 6. Click Apply
 
-###3. Update your *-app.xml
+### 3. Update your *-app.xml
 
 For Android, put this code in your Android Manifest
 
@@ -68,7 +71,7 @@ For Android, put this code in your Android Manifest
 					<activity android:name="com.appsponsor.appsponsorsdk.activity.VideoAdActivity" android:screenOrientation="landscape" android:launchMode="singleTop" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
 					
 					// Add Google Play Services
-					<meta-data android:name="com.google.android.gms.version" android:value="4323000" />
+					<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
 				</application>	
 			</manifest>
 			
@@ -83,16 +86,17 @@ Verify that the Manage SDK entry is added :
     <extensionID>com.appsponsor.nativeExtensions.appsponsorsdk</extensionID>
 </extensions>
 ```
-###4. Displaying an interstitial AD
 
-1. Import the appsponsorsdk into any activity that uses it: 
+### 4. Integrating Manage SDK
+
+1. Import the appsponsorsdk into your desired Activity: 
 
 ```
 import com.appsponsor.nativeExtensions.appsponsorsdk.AppSponsor;
 import com.appsponsor.nativeExtensions.appsponsorsdk.AppSponsorEvent;
 ```
 
-and create a variable for the AppSponsor interstitial ad:
+2. Create a variable for the AppSponsor interstitial ad:
 
 ```
 private var popupAd : AppSponsor;
@@ -101,7 +105,7 @@ private var popupAd : AppSponsor;
 private var rewardedAd : AppSponsor;
 ```
 
-Next you will need to add some code to the method where you want to initialize a Manage Publisher ad.
+3. Next you will need to add some code to the method where you want to initialize a Manage Publisher ad.
 
 ```
 popupAd = new AppSponsor("YOUR ZONE ID");
@@ -111,7 +115,7 @@ rewardedAd = new AppSponsor("YOUR ZONE ID", "PUBLISHER USER ID", true);
 
 ```
 
-####4.1 Improve Ad Targeting by setting non PII user data:
+#### 4.1 Improve Ad Targeting by setting non PII user data:
 
 ```
 popupAd.setCity("");
@@ -129,9 +133,9 @@ popupAd.setYob("")
 popupAd.setKeywords("");
 
 ```
-####4.2 Pre-Cached Ads 
+#### 4.2 Pre-Cached Ads 
    
-  Pre-cache ad:
+Pre-cache ad:
 
 ```
 popupAd.load();
@@ -163,9 +167,12 @@ popupAd.loadAndPresentAd();
 rewardedAd.loadAndPresentAd();
 ```
 
-###5 Optional Steps
+### 5. Optional Steps
 
-5.2 Add event listeners along with callback:
+#### 5.1 Register Events Listeners
+
+Add event listeners along with callback:
+
 ```
 popupAd.addEventListener( AppSponsorEvent.AD_CACHED, eventReceived );
 popupAd.addEventListener( AppSponsorEvent.AD_WILLAPPEAR, eventReceived ); 
@@ -200,7 +207,8 @@ function showRewardSuccess(e:AppSponsorEvent):void{
 
 ```
 
-5.2 Remove event listeners:
+#### 5.2 Register Events Listeners
+
 ```
 interstitial.removeEventListener( AppSponsorEvent.AD_WILLAPPEAR, eventReceived ); 
 interstitial.removeEventListener( AppSponsorEvent.AD_WILLDISAPPEAR, eventReceived ); 
