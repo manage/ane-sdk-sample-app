@@ -37,10 +37,7 @@ Manage sdk.
 ###Legal Requirements:
 ----------------------------------
 You must accept the terms and conditions on the Manage web portal by registering in order to legally use the
-Manage Publisher SDK.  Once you have hit $500 in revenue for that week, you are automatically eligible to
-receive weekly payments. The week runs from Monday-Sunday.
-
-Wire payments require a threshold of $5000 in revenue.
+Manage Publisher SDK. 
 
 ###Contact Us: 
 ----------------------------------
