@@ -271,10 +271,10 @@
 				<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 				<uses-permission android:name="android.permission.READ_PHONE_STATE" />
 				<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-				//and add this within application tag
+				
 				<application>
-					<activity android:name="com.appsponsor.appsponsorsdk.PopupAdActivity" android:launchMode="singleTop" android:theme="@android:style/Theme.Translucent" />
-					<activity android:name="com.appsponsor.appsponsorsdk.video.VideoAdActivity" android:screenOrientation="landscape" android:launchMode="singleTop" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+					<activity android:name="com.appsponsor.appsponsorsdk.activity.PopupAdActivity" android:launchMode="singleTop" android:theme="@android:style/Theme.Translucent" />
+					<activity android:name="com.appsponsor.appsponsorsdk.activity.VideoAdActivity" android:screenOrientation="landscape" android:launchMode="singleTop" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
 					<meta-data android:name="com.google.android.gms.version" android:value="4323000" />
 				</application>	
 			</manifest>
@@ -292,7 +292,7 @@
         <requestedDisplayResolution>high</requestedDisplayResolution>
     </iPhone>
 
-<extensions>
+	<extensions>
         <extensionID>com.appsponsor.nativeExtensions.appsponsorsdk</extensionID>
     </extensions>
 </application>
