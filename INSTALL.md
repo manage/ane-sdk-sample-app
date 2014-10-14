@@ -18,9 +18,13 @@ Requirements and Dependencies:
 
 The SDK for Adobe AIR is available once you [sign up](https://appsponsor.com/user/registration). The Manage Publisher SDK includes everything you need to serve full screen interstitial, video, and playable ad units.
 
-The SDK for Unity can be downloaded here: [ManageSDK-Android-v3.1.zip](/downloads/ManageSDK-Android-v3.1.zip).
+The SDK for Unity can be downloaded here: [ManageSDK-ANE-v3.1.zip](/downloads/ManageSDK-ANE-v3.1.zip).
 
-For an example, please see our [sample app](https://github.com/manage/ane-sdk-sample-app).
+##### Google Play Services
+
+If you are using an existing ANE file with Google Play Services, you can download a version of the SDK without the Google Play Services JAR here: [ManageSDK-ANE-NO_GPS-v3.1.zip](/downloads/ManageSDK-ANE-NO_GPS-v3.1.zip).
+
+To see an example implementation, please see our [sample app](https://github.com/manage/ane-sdk-sample-app).
 
 *Note:* There are some third party ANE files, which obfuscate Google Play Services. In such cases, we can provide custom SDK builds without Google Play Services.
 
@@ -71,7 +75,7 @@ For Android, put this code in your Android Manifest
 					<activity android:name="com.appsponsor.appsponsorsdk.activity.VideoAdActivity" android:screenOrientation="landscape" android:launchMode="singleTop" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
 					
 					// Add Google Play Services
-					<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+					<meta-data android:name="com.google.android.gms.version" android:value="4323000" />
 				</application>	
 			</manifest>
 			
@@ -207,7 +211,7 @@ function showRewardSuccess(e:AppSponsorEvent):void{
 
 ```
 
-#### 5.2 Register Events Listeners
+#### 5.2 Unregister Events Listeners
 
 ```
 interstitial.removeEventListener( AppSponsorEvent.AD_WILLAPPEAR, eventReceived ); 
