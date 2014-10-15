@@ -21,9 +21,10 @@ package
 		
 		private var buttonFormat : TextFormat;
 		
-		private var interstitial1 : AppSponsor;
-		private var interstitial2 : AppSponsor;
-		
+		private var instance1 : AppSponsor;
+		private var instance2 : AppSponsor;
+		private var instance3 : AppSponsor;
+
 		private var feedback : TextField;
 		
 		public function ManageSampleAppANE()
@@ -61,19 +62,25 @@ package
 			
 			if( os == "IOS" )
 			{
-				interstitial1 = new AppSponsor("5eALOrZeZjAQEmb2cyi1fw");
-				setInterstitialListeners(interstitial1);
+				instance1 = new AppSponsor("5eALOrZeZjAQEmb2cyi1fw");
+				setInterstitialListeners(instance1);
 				
-				interstitial2 = new AppSponsor("2ChkpdCmCnSeJBaprqM0bg", "support@appsponsor.com", true);
-				setInterstitialListeners(interstitial2);
+				instance2 = new AppSponsor("2ChkpdCmCnSeJBaprqM0bg", "support@appsponsor.com", true);
+				setInterstitialListeners(instance2);
+
+				instance3 = new AppSponsor("5eALOrZeZjAQEmb2cyi1fw");
+				setInterstitialListeners(instance3);
 			}
 			else
 			{
-				interstitial1 = new AppSponsor("oIs29VQKIa2IfaA4FWkEqw");
-				setInterstitialListeners(interstitial1);
+				instance1 = new AppSponsor("oIs29VQKIa2IfaA4FWkEqw");
+				setInterstitialListeners(instance1);
 				
-				interstitial2 = new AppSponsor("82lEvN030_0zL0kShgS_hw", "support@appsponsor.com", true);
-				setInterstitialListeners(interstitial1);
+				instance2 = new AppSponsor("82lEvN030_0zL0kShgS_hw", "support@appsponsor.com", true);
+				setInterstitialListeners(instance2);
+
+				instance3 = new AppSponsor("oIs29VQKIa2IfaA4FWkEqw");
+				setInterstitialListeners(instance3);
 			}
 		}
 		
@@ -84,10 +91,11 @@ package
 		
 		private function createButtons() : void
 		{
-			var startX : Number = 40;
-			var startX2: Number = 200;
-			var startX3: Number = 360;
-			
+			var startX : Number = 10;
+			var startX2: Number = 130;
+			var startX3: Number = 250;
+			var startX4: Number = 370;
+
 			var bottomInd: Number = 60;
 			var nextY : Number = -150;
 			
@@ -110,6 +118,12 @@ package
 			loadShowButton1.addEventListener( MouseEvent.MOUSE_DOWN, loadShowInterstitial1 );
 			addChild( loadShowButton1 );
 			
+			var loadEventButton1 : TextField = createButton( "LP E Ad" );
+			loadEventButton1.x = startX4;
+			loadEventButton1.y = nextY;
+			loadEventButton1.addEventListener( MouseEvent.MOUSE_DOWN, loadEventInterstitial1 );
+			addChild( loadEventButton1 );		
+			
 			nextY += bottomInd;
 			
 			//ad 2
@@ -130,44 +144,65 @@ package
 			loadShowButton2.y = nextY;
 			loadShowButton2.addEventListener( MouseEvent.MOUSE_DOWN, loadShowInterstitial2 );
 			addChild( loadShowButton2 );
+			
+			var loadEventButton2 : TextField = createButton( "LP E RAd" );
+			loadEventButton2.x = startX4;
+			loadEventButton2.y = nextY;
+			loadEventButton2.addEventListener( MouseEvent.MOUSE_DOWN, loadEventInterstitial2 );
+			addChild( loadEventButton2 );	
 		}
 		
 		// actions
 		
 		private function loadInterstitial1( event : MouseEvent ) : void
 		{
-			interstitial1.load();			
+			instance1.load();			
 			feedback.text = "loadInterstitial1d();";
 		}
 		
 		private function showInterstitial1( event : MouseEvent ) : void
 		{
-			interstitial1.presentAd();	
+			instance1.presentAd();	
 			feedback.text = "showInterstitial1d();";
 		}
 		
 		private function loadShowInterstitial1( event : MouseEvent ) : void
 		{
-			interstitial1.loadAndPresentAd();	
-			feedback.text = "showInterstitial1d();";
+			instance1.loadAndPresentAd();	
+			feedback.text = "loadShowInterstitial1();";
+		}
+		
+		private function loadEventInterstitial1( event: MouseEvent ) : void
+		{
+			instance1.addEventListener( AppSponsorEvent.AD_CACHED, presentAd1 );
+			instance1.load();
+			feedback.text = "loadEventInterstitial1();";
+
 		}
 		
 		private function loadInterstitial2( event : MouseEvent ) : void
 		{
-			interstitial2.load();	
+			instance2.load();	
 			feedback.text = "loadInterstitial2d();";
 		}
 		
 		private function showInterstitial2( event : MouseEvent ) : void
 		{
-			interstitial2.presentAd();	
+			instance2.presentAd();	
 			feedback.text = "showInterstitial2d();";
 		}
 		
 		private function loadShowInterstitial2( event : MouseEvent ) : void
 		{
-			interstitial2.loadAndPresentAd();	
-			feedback.text = "showInterstitial2d();";
+			instance2.loadAndPresentAd();	
+			feedback.text = "loadShowInterstitial2();";
+		}
+		
+		private function loadEventInterstitial2( event: MouseEvent ) : void
+		{
+			instance2.addEventListener( AppSponsorEvent.AD_CACHED, presentAd2 );
+			instance2.load();	
+			feedback.text = "loadEventInterstitial2();";
 		}
 		
 		
@@ -227,6 +262,24 @@ package
 			interstitial.removeEventListener( AppSponsorEvent.AD_CACHED, eventReceived );
 			interstitial.removeEventListener( AppSponsorEvent.AD_REWARD_END, eventReceived );
 		}		
+		
+		private function presentAd1( event : AppSponsorEvent ) : void
+		{
+			feedback.text = "event type: presentAd()1: " + event.type;
+			if (instance1.isReady())
+			{
+				instance1.presentAd();
+			}
+		}
+		
+		private function presentAd2( event : AppSponsorEvent ) : void
+		{
+			feedback.text = "event type: presentAd()1: " + event.type;
+			if (instance2.isReady())
+			{
+				instance2.presentAd();
+			}
+		}
 		
 		private function eventReceived( event : AppSponsorEvent ) : void
 		{
