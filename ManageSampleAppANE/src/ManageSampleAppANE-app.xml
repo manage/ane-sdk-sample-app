@@ -275,7 +275,7 @@
 				<application>
 					<activity android:name="com.appsponsor.appsponsorsdk.activity.PopupAdActivity" android:launchMode="singleTop" android:theme="@android:style/Theme.Translucent" />
 					<activity android:name="com.appsponsor.appsponsorsdk.activity.VideoAdActivity" android:screenOrientation="landscape" android:launchMode="singleTop" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-					<meta-data android:name="com.google.android.gms.version" android:value="4323000" />
+					<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
 				</application>	
 			</manifest>
 			
