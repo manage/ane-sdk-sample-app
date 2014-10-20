@@ -18,7 +18,7 @@ Requirements and Dependencies:
 
 The SDK for Adobe AIR is available once you [sign up](https://appsponsor.com/user/registration). The Manage Publisher SDK includes everything you need to serve full screen interstitial, video, and playable ad units.
 
-The SDK for Unity can be downloaded here: [ManageSDK-ANE-v3.1.zip](/downloads/ManageSDK-ANE-v3.1.zip).
+The SDK can be downloaded here: [ManageSDK-ANE-v3.1.zip](/downloads/ManageSDK-ANE-v3.1.zip).
 
 ##### Google Play Services
 
