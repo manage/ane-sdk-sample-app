@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<application xmlns="http://ns.adobe.com/air/application/14.0">
+<application xmlns="http://ns.adobe.com/air/application/16.0">
 	
 <!-- Adobe AIR Application Descriptor File Template.
 
@@ -15,7 +15,7 @@
 
 	<!-- A universally unique application identifier. Must be unique across all AIR applications.
 	Using a reverse DNS-style name as the id is recommended. (Eg. com.example.ExampleApplication.) Required. -->
-	<id>ManageSampleAppANE</id>
+	<id>ManageSampleAppANE.debug</id>
 
 	<!-- Used as the filename for the application. Required. -->
 	<filename>ManageSampleAppANE</filename>
@@ -273,8 +273,18 @@
 				<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 				
 				<application>
-					<activity android:name="com.appsponsor.appsponsorsdk.activity.PopupAdActivity" android:launchMode="singleTop" android:theme="@android:style/Theme.Translucent" />
-					<activity android:name="com.appsponsor.appsponsorsdk.activity.VideoAdActivity" android:screenOrientation="landscape" android:launchMode="singleTop" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+				    <activity android:name="com.manage.managesdk.activity.InterstitialAdActivity"
+				        android:launchMode="singleTop" android:theme="@android:style/Theme.Translucent">
+				    </activity>
+				
+				    <activity android:name="com.manage.managesdk.activity.VideoAdActivity"
+				        android:configChanges="keyboardHidden|orientation|screenSize">
+				    </activity>     
+				
+				    <activity android:name="com.manage.managesdk.activity.MraidAdActivity"
+				        android:launchMode="singleTop" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:configChanges="keyboardHidden|orientation|screenSize">
+				    </activity>
+				    
 					<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
 				</application>	
 			</manifest>
@@ -293,6 +303,6 @@
     </iPhone>
 
 	<extensions>
-        <extensionID>com.appsponsor.nativeExtensions.appsponsorsdk</extensionID>
+    	<extensionID>com.manage.nativeExtensions.managesdk</extensionID>
     </extensions>
 </application>

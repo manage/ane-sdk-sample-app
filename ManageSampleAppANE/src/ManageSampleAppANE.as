@@ -1,7 +1,7 @@
 package
 {
-	import com.appsponsor.nativeExtensions.appsponsorsdk.AppSponsor;
-	import com.appsponsor.nativeExtensions.appsponsorsdk.AppSponsorEvent;
+	import com.manage.nativeExtensions.managesdk.Manage;
+	import com.manage.nativeExtensions.managesdk.ManageEvent;
 	
 	import flash.display.Shape;
 	import flash.display.Sprite;
@@ -21,9 +21,9 @@ package
 		
 		private var buttonFormat : TextFormat;
 		
-		private var instance1 : AppSponsor;
-		private var instance2 : AppSponsor;
-		private var instance3 : AppSponsor;
+		private var instance1 : Manage;
+		private var instance2 : Manage;
+		private var instance3 : Manage;
 
 		private var feedback : TextField;
 		
@@ -62,24 +62,24 @@ package
 			
 			if( os == "IOS" )
 			{
-				instance1 = new AppSponsor("5eALOrZeZjAQEmb2cyi1fw");
+				instance1 = new Manage("5eALOrZeZjAQEmb2cyi1fw", null);
 				setInterstitialListeners(instance1);
 				
-				instance2 = new AppSponsor("2ChkpdCmCnSeJBaprqM0bg", "support@appsponsor.com", true);
+				instance2 = new Manage("2ChkpdCmCnSeJBaprqM0bg", "support@appsponsor.com", true);
 				setInterstitialListeners(instance2);
 
-				instance3 = new AppSponsor("5eALOrZeZjAQEmb2cyi1fw");
+				instance3 = new Manage("5eALOrZeZjAQEmb2cyi1fw", null);
 				setInterstitialListeners(instance3);
 			}
 			else
 			{
-				instance1 = new AppSponsor("oIs29VQKIa2IfaA4FWkEqw");
+				instance1 = new Manage("oIs29VQKIa2IfaA4FWkEqw", null);
 				setInterstitialListeners(instance1);
 				
-				instance2 = new AppSponsor("82lEvN030_0zL0kShgS_hw", "support@appsponsor.com", true);
+				instance2 = new Manage("82lEvN030_0zL0kShgS_hw", "support@appsponsor.com", true);
 				setInterstitialListeners(instance2);
 
-				instance3 = new AppSponsor("oIs29VQKIa2IfaA4FWkEqw");
+				instance3 = new Manage("oIs29VQKIa2IfaA4FWkEqw", null);
 				setInterstitialListeners(instance3);
 			}
 		}
@@ -174,7 +174,7 @@ package
 		
 		private function loadEventInterstitial1( event: MouseEvent ) : void
 		{
-			instance1.addEventListener( AppSponsorEvent.AD_CACHED, presentAd1 );
+			instance1.addEventListener( ManageEvent.AD_CACHED, presentAd1 );
 			instance1.load();
 			feedback.text = "loadEventInterstitial1();";
 
@@ -200,7 +200,7 @@ package
 		
 		private function loadEventInterstitial2( event: MouseEvent ) : void
 		{
-			instance2.addEventListener( AppSponsorEvent.AD_CACHED, presentAd2 );
+			instance2.addEventListener( ManageEvent.AD_CACHED, presentAd2 );
 			instance2.load();	
 			feedback.text = "loadEventInterstitial2();";
 		}
@@ -245,25 +245,25 @@ package
 			}
 		}
 		
-		private function setInterstitialListeners( interstitial : AppSponsor ) : void
+		private function setInterstitialListeners( interstitial : Manage ) : void
 		{
-			interstitial.addEventListener( AppSponsorEvent.LOAD_FAILED, eventReceived );
-			interstitial.addEventListener( AppSponsorEvent.AD_WILLAPPEAR, eventReceived );
-			interstitial.addEventListener( AppSponsorEvent.AD_WILLDISAPPEAR, eventReceived );
-			interstitial.addEventListener( AppSponsorEvent.AD_CACHED, eventReceived );
-			interstitial.addEventListener( AppSponsorEvent.AD_REWARD_END, eventReceived );
+			interstitial.addEventListener( ManageEvent.LOAD_FAILED, eventReceived );
+			interstitial.addEventListener( ManageEvent.AD_WILLAPPEAR, eventReceived );
+			interstitial.addEventListener( ManageEvent.AD_WILLDISAPPEAR, eventReceived );
+			interstitial.addEventListener( ManageEvent.AD_CACHED, eventReceived );
+			interstitial.addEventListener( ManageEvent.AD_REWARD_END, eventReceived );
 		}
 		
-		private function removeInterstitialListeners( interstitial : AppSponsor ) : void
+		private function removeInterstitialListeners( interstitial : Manage ) : void
 		{
-			interstitial.removeEventListener( AppSponsorEvent.LOAD_FAILED, eventReceived );
-			interstitial.removeEventListener( AppSponsorEvent.AD_WILLAPPEAR, eventReceived );
-			interstitial.removeEventListener( AppSponsorEvent.AD_WILLDISAPPEAR, eventReceived );
-			interstitial.removeEventListener( AppSponsorEvent.AD_CACHED, eventReceived );
-			interstitial.removeEventListener( AppSponsorEvent.AD_REWARD_END, eventReceived );
+			interstitial.removeEventListener( ManageEvent.LOAD_FAILED, eventReceived );
+			interstitial.removeEventListener( ManageEvent.AD_WILLAPPEAR, eventReceived );
+			interstitial.removeEventListener( ManageEvent.AD_WILLDISAPPEAR, eventReceived );
+			interstitial.removeEventListener( ManageEvent.AD_CACHED, eventReceived );
+			interstitial.removeEventListener( ManageEvent.AD_REWARD_END, eventReceived );
 		}		
 		
-		private function presentAd1( event : AppSponsorEvent ) : void
+		private function presentAd1( event : ManageEvent ) : void
 		{
 			feedback.text = "event type: presentAd()1: " + event.type;
 			if (instance1.isReady())
@@ -272,7 +272,7 @@ package
 			}
 		}
 		
-		private function presentAd2( event : AppSponsorEvent ) : void
+		private function presentAd2( event : ManageEvent ) : void
 		{
 			feedback.text = "event type: presentAd()1: " + event.type;
 			if (instance2.isReady())
@@ -281,7 +281,7 @@ package
 			}
 		}
 		
-		private function eventReceived( event : AppSponsorEvent ) : void
+		private function eventReceived( event : ManageEvent ) : void
 		{
 			feedback.text = "event type:" + event.type;
 		}
