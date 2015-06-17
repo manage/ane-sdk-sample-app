@@ -48,4 +48,4 @@ Manage Publisher SDK.
 ###Contact Us: 
 ----------------------------------
 For more information, please visit Manage.com.  For questions or support, please emails us at
-[support@appsponsor.com](mailto:support@appsponsor.com).
+[pub-support@manage.com](mailto:pub-support@manage.com).
